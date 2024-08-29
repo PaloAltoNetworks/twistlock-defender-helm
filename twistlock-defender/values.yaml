@@ -40,12 +40,13 @@ openshift: false
 privileged: "false"
 role_arn: ""
 runc_proxy_sock_folder: /run
-secrets_name: twistlock-pull-secret
+image_pull_secret: twistlock-pull-secret
+env_secret: twistlock-env-secrets
 secret_store:                         # Integrate with External Secrets Operator 
   name:                               # Name of the Secrets Store where the Access to Prisma is located
   kind: ClusterSecretStore            # Secrets Store kind
   refresh_interval: 1h                # Secrets refresh interval
-  registry:
+  pull_secret:
     remote_key:                       # Remote secret name for extracting the registry image
   secrets:
     remote_key:                       # Remote secret name for extracting the Defender secrets

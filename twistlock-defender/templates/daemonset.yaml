@@ -31,9 +31,9 @@ spec:
       {{- end}}
   {{- end}}
       serviceAccountName: twistlock-service
-{{- if .Values.secrets_name }}
+{{- if .Values.image_pull_secret }}
       imagePullSecrets:
-      - name: {{ .Values.secrets_name }}
+      - name: {{ .Values.image_pull_secret }}
 {{- end}}
       restartPolicy: Always
 {{- if .Values.node_selector }}
@@ -76,7 +76,10 @@ spec:
 {{- end}}
         env:
         - name: WS_ADDRESS
-          value: {{ .Values.ws_address }}
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.env_secret }}
+              key: ws_address
         - name: DEFENDER_TYPE
           value: {{ .Values.defender_type }}
         - name: LOG_PROD
@@ -98,7 +101,10 @@ spec:
         - name: COLLECT_POD_LABELS
           value: "{{ .Values.collect_pod_labels }}"
         - name: INSTALL_BUNDLE
-          value: "{{ .Values.install_bundle }}"
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.env_secret }}
+              key: install_bundle
         - name: HOST_CUSTOM_COMPLIANCE_ENABLED
           value: "{{ .Values.host_custom_compliance }}"
         - name: CLOUD_HOSTNAME_ENABLED
