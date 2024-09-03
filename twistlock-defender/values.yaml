@@ -46,10 +46,7 @@ secret_store:                         # Integrate with External Secrets Operator
   name:                               # Name of the Secrets Store where the Access to Prisma is located
   kind: ClusterSecretStore            # Secrets Store kind
   refresh_interval: 1h                # Secrets refresh interval
-  pull_secret:
-    remote_key:                       # Remote secret name for extracting the registry image
-  secrets:
-    remote_key:                       # Remote secret name for extracting the Defender secrets
+  remote_key:                         # Remote secret name for extracting the Defender secrets
 selinux_header: ""
 selinux_options: ""
 service_parameter: 
@@ -57,3 +54,8 @@ talos: false
 twistlock_data_folder: /var/lib/twistlock
 unique_hostname: true
 ws_address:
+admission:
+  secret: admission-secret
+  path: 
+  ca_bundle: 
+  enable_delete: false

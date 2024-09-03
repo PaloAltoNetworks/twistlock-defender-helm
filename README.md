@@ -1,2 +1,2 @@
-# Prisma Cloud Defender Helm Chart
-Helm Chart to deploy Prisma Cloud Defender
+# Twistlock Defender Helm Chart
+Helm Chart to deploy Twistlock Defender
