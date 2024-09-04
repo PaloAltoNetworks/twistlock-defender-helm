@@ -1,9 +1,9 @@
 DATA_FOLDER: /var/lib/twistlock               # Host folder where the defender data will be located
 FIPS_ENABLED: "false"                         # Enables FIPS Cryptographic Modules 
-access_ca: ""                                 # Proxy CA
+access_ca: ""                                 # Access CA
 admission_cert:                               # Admission Controller Certificate. External Secret Key: ADMISSION_CERT
 admission_key:                                # Admission Controller Key. External Secret Key: ADMISSION_KEY
-admission_path:                               # *Admission Controller Path
+admission_path:                               # Admission Controller Path
 admission_add_delete: false                   # Enable monitoring of Delete Operation when using admission controller
 cluster: ""                                   # Name of Cluster. Recommended for On-Prem Clusters. Required only if cluster_name_resolving_method is set to manual
 cluster_name_resolving_method: default        # Method of retrieving the name of the cluster. Possible values: default (using Cloud Metadata), api-server (using Kubelet API) or manual
@@ -22,12 +22,6 @@ defender_type: cri                            # Type of defender
 docker_socket_path: /var/run/docker.sock      # Container runtime socket path
 gke_autopilot_annotation: ""                  # GKE autopilot annotation
 host_custom_compliance: true                  # Check custom Compliance for the host
-image_name:                                   # Image of the defender
-registry:                                     # Registry information to pull the defender image
-  name:                                       # Name of the registry
-  username:                                   # Name of the user  
-  password:                                   # Password of the user
-  dockerconfigjson:                           # Base64 encoded dockerconfigjson
 install_bundle:                               # Defender install bundle. External Secret: INSTALL_BUNDLE
 limit_cpu: '"900m"'                           # CPU Limits of the defender
 limit_memory: '"512Mi"'                       # Memory Limits of the defender 
@@ -39,20 +33,26 @@ old_defender_client_cert: ""                  # Old defender client cert
 old_defender_client_key: ""                   # Old defender client key
 openshift: false                              # Verify if it's openshift deployment
 privileged: "false"                           # Run defender as privileged
-role_arn: ""                                  
-runc_proxy_sock_folder: /run
-twistlock_secret: twistlock-secrets 
-image_pull_secret: twistlock-pull-secret
-env_secret: twistlock-env-secrets
+role_arn: ""                                  # Defender AWS IAM role
+runc_proxy_sock_folder: /run                  # Runc socket folder
+image_pull_secret: twistlock-pull-secret      # Name of the secret use to store the the registry information
+image_name:                                   # Image of the defender
+registry:                                     # Registry information to pull the defender image
+  name:                                       # Name of the registry
+  username:                                   # Name of the user  
+  password:                                   # Password of the user
+  dockerconfigjson:                           # Base64 encoded dockerconfigjson
+twistlock_secret: twistlock-secrets           # Name of the secret use to store defender certificates
+env_secret: twistlock-env-secrets             # Name of the secret use to store environment variables
 secret_store:                                 # Integrate with External Secrets Operator 
   name:                                       # Name of the Secrets Store where the Access to Prisma is located
   kind: ClusterSecretStore                    # Secrets Store kind
   refresh_interval: 1h                        # Secrets refresh interval
   remote_key:                                 # Remote secret name for extracting the Defender secrets
-selinux_header: ""
-selinux_options: ""
-service_parameter: 
-talos: false
-twistlock_data_folder: /var/lib/twistlock
-unique_hostname: true
-ws_address:
+selinux_header: ""                            # SE Linux header
+selinux_options: ""                           # SE Linux Options
+service_parameter:                            # Service Parameter value. External Secret Key: SERVICE_PARAMETER
+talos: false                                  # Verify if it's TalOS deployment
+twistlock_data_folder: /var/lib/twistlock     # Container folder where the defender data will be located
+unique_hostname: true                         # Assign unique host names
+ws_address:                                   # Web Socket address. External Secret Key: WS_ADDRESS
