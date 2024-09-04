@@ -1,52 +1,54 @@
-DATA_FOLDER: /var/lib/twistlock
-FIPS_ENABLED: "false"
-access_ca: ""
-admission_cert: 
-admission_key: 
-cluster: ""
-cluster_name_resolving_method: default
-cluster_role_name: twistlock-view
-collect_pod_labels: true
-container_runtime_socket_folder: /var/run
-containers_storage_mount: /var/lib/containerd
-containers_storage_mount_rke2: /var/lib/rancher/rke2/agent/containerd
-cri_data_rke2_volume_name: cri-rke2-data
-cri_data_volume_name: cri-data
-defender_ca_cert: 
-defender_client_cert: 
-defender_client_key: 
-defender_service_port: 9998
-defender_type: cri
-docker_socket_path: /var/run/docker.sock
-gke_autopilot_annotation: ""
-host_custom_compliance: true
-twistlock_secret: twistlock-secrets
-image_name: 
-registry:
-  name: 
-  username: 
-  password:
-  dockerconfigjson:
-install_bundle: 
-limit_cpu: '"900m"'
-limit_memory: '"512Mi"'
-monitor_istio: false
-monitor_service_accounts: true
-node_selector: ""
-old_defender_ca_cert: ""
-old_defender_client_cert: ""
-old_defender_client_key: ""
-openshift: false
-privileged: "false"
-role_arn: ""
+DATA_FOLDER: /var/lib/twistlock               # Host folder where the defender data will be located
+FIPS_ENABLED: "false"                         # Enables FIPS Cryptographic Modules 
+access_ca: ""                                 # Proxy CA
+admission_cert:                               # Admission Controller Certificate. External Secret Key: ADMISSION_CERT
+admission_key:                                # Admission Controller Key. External Secret Key: ADMISSION_KEY
+admission_path:                               # *Admission Controller Path
+admission_add_delete: false                   # Enable monitoring of Delete Operation when using admission controller
+cluster: ""                                   # Name of Cluster. Recommended for On-Prem Clusters. Required only if cluster_name_resolving_method is set to manual
+cluster_name_resolving_method: default        # Method of retrieving the name of the cluster. Possible values: default (using Cloud Metadata), api-server (using Kubelet API) or manual
+cluster_role_name: twistlock-view             # Name of the ClusterRole to be granted to the defender
+collect_pod_labels: true                      # Collects Namespace and Deployment labels as part of the Pod information
+container_runtime_socket_folder: /var/run     # Runtime socket where the container is located
+containers_storage_mount: /var/lib/containerd # Path where the containers information are being stored
+containers_storage_mount_rke2: /var/lib/rancher/rke2/agent/containerd # Path where the containers information are being stored for RKE clusters
+cri_data_rke2_volume_name: cri-rke2-data      # Containers volume name for RKE Clusters
+cri_data_volume_name: cri-data                # Containers volume name
+defender_ca_cert:                             # *CA certificate for defender - console communication. External Secret Key: DEFENDER_CA
+defender_client_cert:                         # Client certificate for defender - console communication. External Secret Key: DEFENDER_CLIENT_CERT
+defender_client_key:                          # Client key for defender - console communication. External Secret Key: DEFENDER_CLIENT_KEY
+defender_service_port: 9998                   # Admission Controller port    
+defender_type: cri                            # Type of defender
+docker_socket_path: /var/run/docker.sock      # Container runtime socket path
+gke_autopilot_annotation: ""                  # GKE autopilot annotation
+host_custom_compliance: true                  # Check custom Compliance for the host
+image_name:                                   # Image of the defender
+registry:                                     # Registry information to pull the defender image
+  name:                                       # Name of the registry
+  username:                                   # Name of the user  
+  password:                                   # Password of the user
+  dockerconfigjson:                           # Base64 encoded dockerconfigjson
+install_bundle:                               # Defender install bundle. External Secret: INSTALL_BUNDLE
+limit_cpu: '"900m"'                           # CPU Limits of the defender
+limit_memory: '"512Mi"'                       # Memory Limits of the defender 
+monitor_istio: false                          # Enable Istio Monitoring
+monitor_service_accounts: true                # Enable monitoring of the Service Accounts
+node_selector: ""                             # Node Selector of the defender
+old_defender_ca_cert: ""                      # Old defender CA Cert
+old_defender_client_cert: ""                  # Old defender client cert
+old_defender_client_key: ""                   # Old defender client key
+openshift: false                              # Verify if it's openshift deployment
+privileged: "false"                           # Run defender as privileged
+role_arn: ""                                  
 runc_proxy_sock_folder: /run
+twistlock_secret: twistlock-secrets 
 image_pull_secret: twistlock-pull-secret
 env_secret: twistlock-env-secrets
-secret_store:                         # Integrate with External Secrets Operator 
-  name:                               # Name of the Secrets Store where the Access to Prisma is located
-  kind: ClusterSecretStore            # Secrets Store kind
-  refresh_interval: 1h                # Secrets refresh interval
-  remote_key:                         # Remote secret name for extracting the Defender secrets
+secret_store:                                 # Integrate with External Secrets Operator 
+  name:                                       # Name of the Secrets Store where the Access to Prisma is located
+  kind: ClusterSecretStore                    # Secrets Store kind
+  refresh_interval: 1h                        # Secrets refresh interval
+  remote_key:                                 # Remote secret name for extracting the Defender secrets
 selinux_header: ""
 selinux_options: ""
 service_parameter: 
@@ -54,8 +56,3 @@ talos: false
 twistlock_data_folder: /var/lib/twistlock
 unique_hostname: true
 ws_address:
-admission:
-  secret: admission-secret
-  path: 
-  ca_bundle: 
-  enable_delete: false

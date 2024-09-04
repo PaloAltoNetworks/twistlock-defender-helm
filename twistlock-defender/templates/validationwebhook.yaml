@@ -1,4 +1,4 @@
-{{- if and .Values.admission.path .Values.admission.ca_bundle }}
+{{- if and .Values.admission_path .Values.defender_ca_cert }}
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
 metadata:
@@ -16,7 +16,7 @@ webhooks:
         - "CREATE"
         - "UPDATE"
         - "CONNECT"
-        {{- if .Values.admission.enable_delete }}
+        {{- if .Values.admission_add_delete }}
         - "DELETE"
         {{- end }}
         apiGroups: ["*"]
@@ -24,9 +24,9 @@ webhooks:
         resources: ["*/*"]
     clientConfig:
       # caBundle field should be similar to the CA bundle from the Defender DaemonSet YAML. Make sure to change it if you are using an older Defender CA.
-      caBundle: "{{ .Values.admission.ca_bundle }}"
+      caBundle: "{{ .Values.defender_ca_cert }}"
       service:
         name: defender
         namespace: {{ .Release.Namespace }}
-        path: {{ .Values.admission.path }}
+        path: {{ .Values.admission_path }}
 {{- end }}
