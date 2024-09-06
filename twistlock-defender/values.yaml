@@ -55,4 +55,13 @@ service_parameter:                            # Service Parameter value. Externa
 talos: false                                  # Verify if it's TalOS deployment
 twistlock_data_folder: /var/lib/twistlock     # Container folder where the defender data will be located
 unique_hostname: true                         # Assign unique host names
-ws_address:                                   # Web Socket address. External Secret Key: WS_ADDRESS
+ws_address:                                   # Web Socket address. External Secret Key: WS_ADDRESS 
+annotations:                                  # Defender DaemonSet annotations
+#  annotation1: test
+tolerations:                                  # Makes pods runnable on all nodes including master node.
+#  - operator: Exists
+#    effect: NoSchedule
+#  - operator: Exists
+#    effect: PreferNoSchedule
+#  - operator: Exists
+#    effect: NoExecute
