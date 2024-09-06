@@ -21,7 +21,7 @@ defender_service_port: 9998                   # Admission Controller port
 defender_type: cri                            # Type of defender
 docker_socket_path: /var/run/docker.sock      # Container runtime socket path
 gke_autopilot_annotation: ""                  # GKE autopilot annotation
-host_custom_compliance: true                  # Check custom Compliance for the host
+host_custom_compliance: false                 # Check custom Compliance for the host
 install_bundle:                               # Defender install bundle. External Secret: INSTALL_BUNDLE
 limit_cpu: '"900m"'                           # CPU Limits of the defender
 limit_memory: '"512Mi"'                       # Memory Limits of the defender 
