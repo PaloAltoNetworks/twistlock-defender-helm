@@ -4,7 +4,7 @@ entries:
     - apiVersion: v1
       created: 2024-01-02T09:53:50.499029981-06:00
       description: Deploy Twistlock Defender Helm version 32.07.123
-      digest: c83f5f644ae448d793a4c3afef03a4fbd702ec0c79e9e956801145e5153da0e8
+      digest: 481d6237f5b6551688beaba1f89df6711ffc7530f4a22962efc75dab488f0b1b
       name: twistlock-defender
       urls:
       - twistlock-defender-32.07.123.tgz
