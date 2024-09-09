@@ -109,6 +109,20 @@ secret_store:
     remote_key: <YOUR_SECRET_NAME>
 ```
 
+### GKE Autopilot deployment
+For deployments in GKE Autopilot it is required to set the following value:
+```yaml
+gke_autopilot_annotation: 'autopilot.gke.io/no-connect: "true"'
+```
+
+### OpenShift deployment
+For deployments in OpenShift, set the following values:
+```yaml
+openshift: true
+selinux_header: 'seLinuxOptions:'
+selinux_options: 'type: spc_t'
+```
+
 ### Including Admission Controller
 To include the admission controller you must include the following values:
 ```yaml
