@@ -1,5 +1,5 @@
 DATA_FOLDER: /var/lib/twistlock               # Host folder where the defender data will be located
-FIPS_ENABLED: "false"                         # Enables FIPS Cryptographic Modules 
+FIPS_ENABLED: "false"                         # Enables FIPS Cryptographic Modules
 access_ca: ""                                 # Access CA
 admission_cert:                               # Admission Controller Certificate. External Secret Key: ADMISSION_CERT
 admission_key:                                # Admission Controller Key. External Secret Key: ADMISSION_KEY
@@ -17,14 +17,16 @@ cri_data_volume_name: cri-data                # Containers volume name
 defender_ca_cert:                             # *CA certificate for defender - console communication. External Secret Key: DEFENDER_CA
 defender_client_cert:                         # Client certificate for defender - console communication. External Secret Key: DEFENDER_CLIENT_CERT
 defender_client_key:                          # Client key for defender - console communication. External Secret Key: DEFENDER_CLIENT_KEY
-defender_service_port: 9998                   # Admission Controller port    
+defender_service_port: 9998                   # Admission Controller port
 defender_type: cri                            # Type of defender
 docker_socket_path: /var/run/docker.sock      # Container runtime socket path
 gke_autopilot_annotation: ""                  # GKE autopilot annotation
 host_custom_compliance: false                 # Check custom Compliance for the host
 install_bundle:                               # Defender install bundle. External Secret: INSTALL_BUNDLE
-limit_cpu: '"900m"'                           # CPU Limits of the defender
-limit_memory: '"512Mi"'                       # Memory Limits of the defender 
+requests_cpu: '"256m"'                        # CPU Request of the defender
+# requests_memory: '"512Mi"'                    # Memory Request of the defender
+limits_cpu: '"900m"'                          # CPU Limits of the defender
+limits_memory: '"512Mi"'                      # Memory Limits of the defender
 monitor_istio: false                          # Enable Istio Monitoring
 monitor_service_accounts: true                # Enable monitoring of the Service Accounts
 node_selector: ""                             # Node Selector of the defender
@@ -39,12 +41,12 @@ image_pull_secret: twistlock-pull-secret      # Name of the secret use to store 
 image_name:                                   # Image of the defender
 registry:                                     # Registry information to pull the defender image
   name:                                       # Name of the registry
-  username:                                   # Name of the user  
+  username:                                   # Name of the user
   password:                                   # Password of the user
   dockerconfigjson:                           # Base64 encoded dockerconfigjson
 twistlock_secret: twistlock-secrets           # Name of the secret use to store defender certificates
 env_secret: twistlock-env-secrets             # Name of the secret use to store environment variables
-secret_store:                                 # Integrate with External Secrets Operator 
+secret_store:                                 # Integrate with External Secrets Operator
   name:                                       # Name of the Secrets Store where the Access to Prisma is located
   kind: ClusterSecretStore                    # Secrets Store kind
   refresh_interval: 1h                        # Secrets refresh interval
@@ -55,7 +57,7 @@ service_parameter:                            # Service Parameter value. Externa
 talos: false                                  # Verify if it's TalOS deployment
 twistlock_data_folder: /var/lib/twistlock     # Container folder where the defender data will be located
 unique_hostname: true                         # Assign unique host names
-ws_address:                                   # Web Socket address. External Secret Key: WS_ADDRESS 
+ws_address:                                   # Web Socket address. External Secret Key: WS_ADDRESS
 annotations:                                  # Defender DaemonSet annotations
 #  annotation1: test
 tolerations:                                  # Makes pods runnable on all nodes including master node.
