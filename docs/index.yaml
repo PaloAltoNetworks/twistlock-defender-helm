@@ -2,21 +2,21 @@ apiVersion: v1
 entries:
   twistlock-defender:
   - apiVersion: v1
-    created: "2024-09-09T11:24:09.3639845-06:00"
+    created: "2024-09-09T11:28:07.4467351-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: ee5b73ca2d784f07b34a0d63286fa56b0553103dbc1ef51f7b85f2b4ae3939db
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
     name: twistlock-defender
     urls:
-    - https://paloaltonetworks.github.io/twistlock-defender-helm/docs/twistlock-defender-33.00.169.tgz
+    - https://paloaltonetworks.github.io/twistlock-defender-helm/twistlock-defender-33.00.169.tgz
     version: 33.00.169
   - apiVersion: v1
-    created: "2024-09-09T11:24:09.3633231-06:00"
+    created: "2024-09-09T11:28:07.4455835-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: c85ba21d3f00acc6d6936e9931947019316b67dad96d343110be294bde0b654c
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
     name: twistlock-defender
     urls:
-    - https://paloaltonetworks.github.io/twistlock-defender-helm/docs/twistlock-defender-32.07.123.tgz
+    - https://paloaltonetworks.github.io/twistlock-defender-helm/twistlock-defender-32.07.123.tgz
     version: 32.07.123
-generated: "2024-09-09T11:24:09.3608121-06:00"
+generated: "2024-09-09T11:28:07.4439443-06:00"
