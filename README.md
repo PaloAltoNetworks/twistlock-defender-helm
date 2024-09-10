@@ -4,7 +4,7 @@ Helm Chart to deploy Twistlock Defender.
 This Chart can work with the CNCF approved [External Secrets Operator](https://external-secrets.io/latest) to manage it's internal secrets.
 
 > **NOTE**
-> * This Chart was tested using AWS Secrets Manager as External Secret Manager
+> * This Chart was tested using AWS Secrets Manager and Azure Key Vault as secret management systems.
 > <br></br>
 
 # Pre-requisites
@@ -54,7 +54,9 @@ Create the Secret with the following JSON format:
 ```
 You **must** substitute the values by the ones corresponding to your defender deployment. 
 
-The values from SERVICE_PARAMETER until WS_ADDRESS are values that can be found in the values.yaml file of the helm chart downloaded from Prisma Cloud previously. 
+For Azure Key vault, you require to set the **content type** to **application/json**.
+
+The values from SERVICE_PARAMETER until WS_ADDRESS are values that can be found in the **values.yaml** file of the helm chart downloaded from Prisma Cloud previously. 
 
 If using the Defender Public Registry, the values for registry configuration should be the following:
 - REGISTRY: registry.twistlock.com
