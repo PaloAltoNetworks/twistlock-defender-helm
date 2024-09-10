@@ -22,7 +22,7 @@ Once chosen the appropriate options for you, then Download the Helm Chart:
 The file downloaded will be called **twistlock-defender-helm.tar.gz**. Inside of this compressed folder you need to extract the file **values.yaml** which will help as reference for the deployment.
 
 ## Handling External Secrets (optional)
-To store the secrets related to the defender deployment in a External Secrets Managment system, use the following process:
+To store the secrets related to the defender deployment in a Secrets Managment System, use the following process:
 
 ### Install External Secrets Operator
 Install the External Secrets Operator with the following commands
@@ -33,7 +33,11 @@ helm install external-secrets external-secrets/external-secrets -n external-secr
 For more details regarding the installation, follow up the [getting started](https://external-secrets.io/latest/introduction/getting-started/) guide.
 
 ### Create a ClusterSecretStore or SecretStore
-Follow up the corresponding [guide](https://external-secrets.io/latest/provider/aws-secrets-manager/) for installing a SecretStore or ClusterSecretStore so the External Secrets Operator can retrieve the secrets.
+Follow up the corresponding [guide](https://external-secrets.io/latest/provider/aws-secrets-manager/) for installing a SecretStore or ClusterSecretStore so the External Secrets Operator can retrieve the secrets. This Chart uses by default **ClusterSecretStore** since there's no attachment to the namespace where the defender is being deployed. To change it to SecretStore, set the follwing value in your values.yaml file:
+```yaml
+secret_store:                                 
+  kind: SecretStore
+```
 
 ### Create a Secret
 Create the Secret with the following JSON format:
@@ -73,8 +77,6 @@ collect_pod_labels: true          # Allows the Collection of Namespace an Deploy
 monitor_service_accounts: true    # Allows the monitoring of the k8s service accounts
 unique_hostname: true             # Assings unique hostnames
 host_custom_compliance: false     # Disables de custome compliance of hosts
-secret_store:                                 
-  kind: ClusterSecretStore        # Use secret stores kind ClusterSecretStore
 ```
 All other default settings can be found un the [values.yaml](https://github.com/PaloAltoNetworks/twistlock-defender-helm/blob/main/twistlock-defender/values.yaml) file.
 
