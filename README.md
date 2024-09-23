@@ -90,7 +90,7 @@ registry:
     username: twistlock
     password: <ACCESS_TOKEN>
 # Secrets
-service_PARAMETER: <YOUR_SERVICE_PARAMETER>
+service_parameter: <YOUR_SERVICE_PARAMETER>
 defender_ca_cert: <YOUR_DEFENDER_CA>
 defender_client_cert: <YOUR_DEFENDER_CERT>
 defender_client_key: <YOUR_DEFENDER_KEY>
