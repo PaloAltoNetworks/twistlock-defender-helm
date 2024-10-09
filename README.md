@@ -1,4 +1,4 @@
-# Twistlock Defender Helm Chart
+# Twistlock Defender Helm Chart (Community)
 Helm Chart to deploy Twistlock Defender. 
 
 This Chart can work with the CNCF approved [External Secrets Operator](https://external-secrets.io/latest) to manage it's internal secrets.
@@ -6,6 +6,9 @@ This Chart can work with the CNCF approved [External Secrets Operator](https://e
 > **NOTE**
 > * This Chart was tested using AWS Secrets Manager and Azure Key Vault as secret management systems.
 > <br></br>
+
+# Support
+This Chart is a community support helm chart, meanwhile the chart downloaded from Prisma Cloud is the officialy supported.
 
 # Pre-requisites
 ## Download Helm Chart from Prisma Cloud
