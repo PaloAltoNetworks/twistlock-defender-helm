@@ -7,9 +7,6 @@ This Chart can work with the CNCF approved [External Secrets Operator](https://e
 > * This Chart was tested using AWS Secrets Manager and Azure Key Vault as secret management systems.
 > <br></br>
 
-# Support
-This Chart is a community support helm chart, meanwhile the chart downloaded from Prisma Cloud is the officialy supported.
-
 # Pre-requisites
 ## Download Helm Chart from Prisma Cloud
 To get the required values for this Helm Chart to work download the Helm Chart from Prisma Cloud Compute Console by going to Manage > Defenders > Manual Deploy and Select the following paramaters:
