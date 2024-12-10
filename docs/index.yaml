@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   twistlock-defender:
   - apiVersion: v1
+    appVersion: 33.02.134
+    created: "2024-12-09T18:44:43.3452146-06:00"
+    description: Twistlock Defender Daemon Set Helm Chart
+    digest: 67711b2a47f4b49dc39a535b524dc089853dcb794256853efa6083d579d63b1d
+    icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
+    name: twistlock-defender
+    urls:
+    - https://paloaltonetworks.github.io/twistlock-defender-helm/twistlock-defender-33.02.134.tgz
+    version: 33.02.134
+  - apiVersion: v1
     appVersion: 33.01.137
-    created: "2024-10-09T11:39:19.2703336-06:00"
+    created: "2024-12-09T18:44:43.3434524-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: 25a044915a6b3638b2b1e14cb33e89d45040e209b97a9f61351d9ecf6f5e615d
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -13,7 +23,7 @@ entries:
     version: 33.01.137
   - apiVersion: v1
     appVersion: 33.00.169
-    created: "2024-10-09T11:39:19.2692699-06:00"
+    created: "2024-12-09T18:44:43.3418903-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: 5a6bade6e4fee85bf30c7f94729f0d2d4a5e9edb8871af1d552fdb63851621a8
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -23,7 +33,7 @@ entries:
     version: 33.00.169
   - apiVersion: v1
     appVersion: 32.07.123
-    created: "2024-10-09T11:39:19.2687026-06:00"
+    created: "2024-12-09T18:44:43.3407997-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: 7ee05046a86591382011ca64894988b022d3da8564487226b711004827feddd1
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -31,4 +41,4 @@ entries:
     urls:
     - https://paloaltonetworks.github.io/twistlock-defender-helm/twistlock-defender-32.07.123.tgz
     version: 32.07.123
-generated: "2024-10-09T11:39:19.2664015-06:00"
+generated: "2024-12-09T18:44:43.3386815-06:00"
