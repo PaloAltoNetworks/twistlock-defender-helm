@@ -25,8 +25,8 @@ host_custom_compliance: false                 # Check custom Compliance for the 
 install_bundle:                               # Defender install bundle. External Secret: INSTALL_BUNDLE
 requests_cpu: '"256m"'                        # CPU Request of the defender
 # requests_memory: '"512Mi"'                    # Memory Request of the defender
-limits_cpu: '"900m"'                          # CPU Limits of the defender
-limits_memory: '"512Mi"'                      # Memory Limits of the defender
+limit_cpu: '"900m"'                          # CPU Limits of the defender
+limit_memory: '"512Mi"'                      # Memory Limits of the defender
 monitor_istio: false                          # Enable Istio Monitoring
 monitor_service_accounts: true                # Enable monitoring of the Service Accounts
 node_selector: ""                             # Node Selector of the defender

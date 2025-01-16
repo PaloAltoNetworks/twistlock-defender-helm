@@ -137,8 +137,8 @@ spec:
             - IPC_LOCK   # Required for perf events monitoring, allowing to ignore memory lock limits
         resources: # See: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#how-pods-with-resource-requests-are-scheduled
           limits:
-            memory: {{ .Values.limits_memory }}
-            cpu: {{ .Values.limits_cpu }}
+            memory: {{ .Values.limit_memory }}
+            cpu: {{ .Values.limit_cpu }}
           requests:
             {{- if .Values.requests_memory }}
             memory: {{ .Values.requests_memory }}
