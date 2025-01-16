@@ -67,3 +67,5 @@ tolerations:                                  # Makes pods runnable on all nodes
 #    effect: PreferNoSchedule
 #  - operator: Exists
 #    effect: NoExecute
+labels:                                       # Defender DaemonSet labels
+#  label1: test
