@@ -21,6 +21,11 @@ spec:
 {{- end}}
       labels:
         app: twistlock-defender
+{{- if .Values.labels }}
+  {{- range $key, $val := .Values.labels }}
+        {{ $key }}: {{ $val }}
+  {{- end}}
+{{- end}}
     spec:
   {{- if .Values.tolerations }}
       tolerations:
