@@ -94,7 +94,11 @@ spec:
         - name: DOCKER_CLIENT_ADDRESS
           value: "{{ .Values.docker_socket_path }}"
         - name: DEFENDER_CLUSTER_ID
+{{- if (lookup "apps/v1" "DaemonSet" .Release.Namespace "twistlock-defender-ds") }}
+          value: "{{ (index (index (lookup "apps/v1" "DaemonSet" .Release.Namespace "twistlock-defender-ds").spec.template.spec.containers 0).env 5).value }}"
+{{- else }}
           value: "{{ uuidv4 }}"
+{{- end }}
         - name: DEFENDER_CLUSTER_NAME_RESOLVING_METHOD
           value: "{{ .Values.cluster_name_resolving_method }}"
         - name: DEFENDER_CLUSTER
