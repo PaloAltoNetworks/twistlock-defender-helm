@@ -37,7 +37,7 @@ openshift: false                              # Verify if it's openshift deploym
 privileged: "false"                           # Run defender as privileged
 role_arn: ""                                  # Defender AWS IAM role
 runc_proxy_sock_folder: /run                  # Runc socket folder
-image_pull_secret: twistlock-pull-secret      # Name of the secret use to store the the registry information
+image_pull_secret: twistlock-pull-secret      # Name of the secret use to store the the registry information. Leave it blank if it's not required a secret to pull the image
 image_name:                                   # Image of the defender
 registry:                                     # Registry information to pull the defender image
   name:                                       # Name of the registry
