@@ -45,7 +45,7 @@ For more details regarding the installation, follow up the [getting started](htt
 Follow up the corresponding [guide](https://external-secrets.io/latest/provider/aws-secrets-manager/) for installing a SecretStore or ClusterSecretStore so the External Secrets Operator can retrieve the secrets. This Chart uses by default **ClusterSecretStore** since there's no attachment to the namespace where the defender is being deployed. To change it to SecretStore, set the follwing value in your values.yaml file:
 
 ```yaml
-secret_store:                               
+secret_store:                             
   kind: SecretStore
 ```
 
@@ -73,15 +73,15 @@ You **must** substitute the values by the ones corresponding to your defender de
 
 For Azure Key vault, you require to set the **content type** to **application/json**.
 
-The values from SERVICE_PARAMETER until WS_ADDRESS are values that can be found in the **values.yaml** file of the helm chart downloaded from Prisma Cloud previously.
+The values for SERVICE_PARAMETER until WS_ADDRESS parameters can be found in the **values.yaml** file of the helm chart downloaded from Prisma Cloud previously.
 
-If using the Defender Public Registry, the values for registry configuration should be the following:
+If using the Defender Public Registry, the values for registry configuration parameters should be the following:
 
 - REGISTRY: registry.twistlock.com
 - REGISTRY_USER: Any of your choice
 - REGISTRY_PASS: The access token used to download the image
 
-But if you don't require to have a secret to pull the defender image, therefore this values can be omitted and you must set the value ``image_pull_secret`` to blank as in the following example:
+But if you don't require to have a secret to pull the defender image, therefore these parameters can be omitted from the secret and you must set the value ``image_pull_secret`` in the **values.yaml** file to blank as in the following example:
 
 ```yaml
 image_pull_secret:
