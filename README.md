@@ -7,7 +7,6 @@ This Chart can work with the CNCF approved [External Secrets Operator](https://e
 > **NOTE**
 >
 > * This Chart was tested using AWS Secrets Manager and Azure Key Vault as secret management systems.
->   `<br></br>`
 
 # Pre-requisites
 
@@ -45,7 +44,7 @@ For more details regarding the installation, follow up the [getting started](htt
 Follow up the corresponding [guide](https://external-secrets.io/latest/provider/aws-secrets-manager/) for installing a SecretStore or ClusterSecretStore so the External Secrets Operator can retrieve the secrets. This Chart uses by default **ClusterSecretStore** since there's no attachment to the namespace where the defender is being deployed. To change it to SecretStore, set the follwing value in your values.yaml file:
 
 ```yaml
-secret_store:                             
+secret_store:                           
   kind: SecretStore
 ```
 
