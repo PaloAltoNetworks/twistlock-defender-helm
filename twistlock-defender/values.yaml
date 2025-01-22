@@ -51,6 +51,18 @@ secret_store:                                 # Integrate with External Secrets 
   kind: ClusterSecretStore                    # Secrets Store kind
   refresh_interval: 1h                        # Secrets refresh interval
   remote_key:                                 # Remote secret name for extracting the Defender secrets
+  properties_name:                            # ExternalSecret properties name
+    service_parameter: SERVICE_PARAMETER      # SERVICE_PARAMETER key name on remote secret
+    defender_ca: DEFENDER_CA                  # DEFENDER_CA key name on remote secret
+    defender_client_cert: DEFENDER_CLIENT_CERT # DEFENDER_CLIENT_CERT key name on remote secret
+    defender_client_key: DEFENDER_CLIENT_KEY  # DEFENDER_CLIENT_KEY key name on remote secret
+    admission_cert: ADMISSION_CERT            # ADMISSION_CERT key name on remote secret
+    admission_key: ADMISSION_KEY              # ADMISSION_KEY key name on remote secret
+    registry: REGISTRY                        # image registry url
+    username: REGISTRY_USER                   # image registry user
+    password: REGISTRY_PASS                   # image registry password
+    install_bundle: INSTALL_BUNDLE            # bundle install key name on remote secret
+    ws_address: WS_ADDRESS                    # web service address key name on remote secret
 selinux_header: ""                            # SE Linux header
 selinux_options: ""                           # SE Linux Options
 service_parameter:                            # Service Parameter value. External Secret Key: SERVICE_PARAMETER
