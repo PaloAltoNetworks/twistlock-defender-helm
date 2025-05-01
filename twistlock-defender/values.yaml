@@ -90,10 +90,3 @@ affinity:                                   # Defender DaemonSet affinity
 #          operator: NotIn
 #          values:
 #          - fargate
-resources:
-# requests:
-#   cpu: "256m"                              # CPU Request of the defender
-#   memory: "512Mi"                          # Memory Request of the defender
-# limits:
-#   cpu: "900m"                              # CPU Limits of the defender
-#   memory: "512Mi"                          # Memory Limits of the defender
