@@ -35,6 +35,10 @@ spec:
         {{- end}}
       {{- end}}
   {{- end}}
+      {{- if .Values.affinity }}
+      affinity:
+        {{ .Values.affinity | toYaml | indent 8 }}
+      {{- end }}
       serviceAccountName: twistlock-service
 {{- if .Values.image_pull_secret }}
       imagePullSecrets:
