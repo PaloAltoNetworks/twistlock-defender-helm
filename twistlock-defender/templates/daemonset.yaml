@@ -35,6 +35,10 @@ spec:
         {{- end}}
       {{- end}}
   {{- end}}
+      {{- if .Values.affinity }}
+      affinity:
+        {{ .Values.affinity | toYaml | indent 8 }}
+      {{- end }}
       serviceAccountName: twistlock-service
 {{- if .Values.image_pull_secret }}
       imagePullSecrets:
@@ -139,15 +143,16 @@ spec:
             - MKNOD      # A capability to create special files using mknod(2), used by docker-less registry scanning
             - SETFCAP    # A capability to set file capabilities, used by docker-less registry scanning
             - IPC_LOCK   # Required for perf events monitoring, allowing to ignore memory lock limits
-        resources: # See: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#how-pods-with-resource-requests-are-scheduled
-          limits:
-            memory: "{{ trimAll "\"" .Values.limit_memory }}"
-            cpu: "{{ trimAll "\"" .Values.limit_cpu }}"
-          requests:
-            {{- if .Values.requests_memory }}
-            memory: "{{ trimAll "\"" .Values.requests_memory }}"
-            {{- end }}
-            cpu: "{{ trimAll "\"" .Values.requests_cpu }}"
+        resources:
+          {{ .Values.resources | toYaml | nindent 10 }} # See: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#how-pods-with-resource-requests-are-scheduled
+          # limits:
+          #   memory: "{{ trimAll "\"" .Values.limit_memory }}"
+          #   cpu: "{{ trimAll "\"" .Values.limit_cpu }}"
+          # requests:
+          #   {{- if .Values.requests_memory }}
+          #   memory: "{{ trimAll "\"" .Values.requests_memory }}"
+          #   {{- end }}
+          #   cpu: "{{ trimAll "\"" .Values.requests_cpu }}"
       volumes:
       - name: certificates
         secret:

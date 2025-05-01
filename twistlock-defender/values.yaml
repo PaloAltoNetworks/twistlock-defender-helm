@@ -23,10 +23,10 @@ docker_socket_path: /var/run/docker.sock      # Container runtime socket path
 gke_autopilot_annotation: ""                  # GKE autopilot annotation
 host_custom_compliance: false                 # Check custom Compliance for the host
 install_bundle:                               # Defender install bundle. External Secret: INSTALL_BUNDLE
-requests_cpu: '"256m"'                        # CPU Request of the defender
+#requests_cpu: '"256m"'                        # CPU Request of the defender
 # requests_memory: '"512Mi"'                    # Memory Request of the defender
-limit_cpu: '"900m"'                          # CPU Limits of the defender
-limit_memory: '"512Mi"'                      # Memory Limits of the defender
+#limit_cpu: '"900m"'                          # CPU Limits of the defender
+#limit_memory: '"512Mi"'                      # Memory Limits of the defender
 monitor_istio: false                          # Enable Istio Monitoring
 monitor_service_accounts: true                # Enable monitoring of the Service Accounts
 node_selector: ""                             # Node Selector of the defender
@@ -81,3 +81,19 @@ tolerations:                                  # Makes pods runnable on all nodes
 #    effect: NoExecute
 labels:                                       # Defender DaemonSet labels
 #  label1: test
+affinity:                                   # Defender DaemonSet affinity
+#  nodeAffinity:
+#    requiredDuringSchedulingIgnoredDuringExecution:
+#      nodeSelectorTerms:
+#      - matchExpressions:
+#        - key: eks.amazonaws.com/compute-type
+#          operator: NotIn
+#          values:
+#          - fargate
+resources:
+# requests:
+#   cpu: "256m"                              # CPU Request of the defender
+#   memory: "512Mi"                          # Memory Request of the defender
+# limits:
+#   cpu: "900m"                              # CPU Limits of the defender
+#   memory: "512Mi"                          # Memory Limits of the defender
