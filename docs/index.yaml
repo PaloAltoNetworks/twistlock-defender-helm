@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   twistlock-defender:
   - apiVersion: v1
+    appVersion: 34.0.142
+    created: "2025-05-08T18:06:07.9308907-06:00"
+    description: Twistlock Defender Daemon Set Helm Chart
+    digest: 7b6fea39394515a9aef09fd25205044b0a8bc4d4d3df77144bab6f2fe9dbe8e1
+    icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
+    name: twistlock-defender
+    urls:
+    - twistlock-defender-34.0.142.tgz
+    version: 34.0.142
+  - apiVersion: v1
     appVersion: 34.0.141
-    created: "2025-04-04T13:54:09.9418987-06:00"
+    created: "2025-05-08T18:06:07.9297621-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: 2b11f2508c5d5ea0c2023ee213a54b2bbabbe6027bc59941943ad85ef5242e3a
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -13,7 +23,7 @@ entries:
     version: 34.0.141
   - apiVersion: v1
     appVersion: 34.00.141
-    created: "2025-04-04T13:54:09.9442201-06:00"
+    created: "2025-05-08T18:06:07.9330698-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: 5a715201c83de2b36bc329345bb8c07d1d3c4fee041f18e093fa838b395fd781
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -23,7 +33,7 @@ entries:
     version: 34.00.141
   - apiVersion: v1
     appVersion: 33.03.138
-    created: "2025-04-04T13:54:09.9390649-06:00"
+    created: "2025-05-08T18:06:07.9201306-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: c60359eb3b07d246e0156939e6f2a1c0067935617058510b9c4bb673ab954d90
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -33,7 +43,7 @@ entries:
     version: 33.03.138
   - apiVersion: v1
     appVersion: 33.3.138
-    created: "2025-04-04T13:54:09.9418987-06:00"
+    created: "2025-05-08T18:06:07.927401-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: 513406417eacd16727ab25728f842a702f6d1e9b295d76fe61c527983822a61e
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -43,7 +53,7 @@ entries:
     version: 33.3.138
   - apiVersion: v1
     appVersion: 33.02.134
-    created: "2025-04-04T13:54:09.9384087-06:00"
+    created: "2025-05-08T18:06:07.9158875-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: 67711b2a47f4b49dc39a535b524dc089853dcb794256853efa6083d579d63b1d
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -53,7 +63,7 @@ entries:
     version: 33.02.134
   - apiVersion: v1
     appVersion: 33.2.134
-    created: "2025-04-04T13:54:09.9402403-06:00"
+    created: "2025-05-08T18:06:07.9257392-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: d5502873e592f6436c0dd9eaab69c1c7b7a97f246869a65ce79acb9167951b8c
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -63,7 +73,7 @@ entries:
     version: 33.2.134
   - apiVersion: v1
     appVersion: 33.01.137
-    created: "2025-04-04T13:54:09.9372255-06:00"
+    created: "2025-05-08T18:06:07.9127578-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: 25a044915a6b3638b2b1e14cb33e89d45040e209b97a9f61351d9ecf6f5e615d
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -73,7 +83,7 @@ entries:
     version: 33.01.137
   - apiVersion: v1
     appVersion: 33.1.137
-    created: "2025-04-04T13:54:09.9402403-06:00"
+    created: "2025-05-08T18:06:07.9239288-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: 23db5239a66e32dd37b88e351cfa224302f593f497f9914f93d5d40986458d34
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -83,7 +93,7 @@ entries:
     version: 33.1.137
   - apiVersion: v1
     appVersion: 33.00.169
-    created: "2025-04-04T13:54:09.9363228-06:00"
+    created: "2025-05-08T18:06:07.9103399-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: 5a6bade6e4fee85bf30c7f94729f0d2d4a5e9edb8871af1d552fdb63851621a8
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -93,7 +103,7 @@ entries:
     version: 33.00.169
   - apiVersion: v1
     appVersion: 32.07.123
-    created: "2025-04-04T13:54:09.9327187-06:00"
+    created: "2025-05-08T18:06:07.9071927-06:00"
     description: Twistlock Defender Daemon Set Helm Chart
     digest: 7ee05046a86591382011ca64894988b022d3da8564487226b711004827feddd1
     icon: https://www.paloaltonetworks.com/content/dam/pan/en_US/images/logos/brand/prisma-primary/prisma-primary-card.png?imwidth=1366
@@ -101,4 +111,4 @@ entries:
     urls:
     - twistlock-defender-32.07.123.tgz
     version: 32.07.123
-generated: "2025-04-04T13:54:09.9316341-06:00"
+generated: "2025-05-08T18:06:07.903377-06:00"

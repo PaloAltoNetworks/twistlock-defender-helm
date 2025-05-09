@@ -81,3 +81,12 @@ tolerations:                                  # Makes pods runnable on all nodes
 #    effect: NoExecute
 labels:                                       # Defender DaemonSet labels
 #  label1: test
+affinity:                                   # Defender DaemonSet affinity
+#  nodeAffinity:
+#    requiredDuringSchedulingIgnoredDuringExecution:
+#      nodeSelectorTerms:
+#      - matchExpressions:
+#        - key: eks.amazonaws.com/compute-type
+#          operator: NotIn
+#          values:
+#          - fargate

@@ -35,6 +35,10 @@ spec:
         {{- end}}
       {{- end}}
   {{- end}}
+      {{- if .Values.affinity }}
+      affinity:
+{{ .Values.affinity | toYaml | indent 8 }}
+      {{- end }}
       serviceAccountName: twistlock-service
 {{- if .Values.image_pull_secret }}
       imagePullSecrets:
@@ -140,14 +144,24 @@ spec:
             - SETFCAP    # A capability to set file capabilities, used by docker-less registry scanning
             - IPC_LOCK   # Required for perf events monitoring, allowing to ignore memory lock limits
         resources: # See: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#how-pods-with-resource-requests-are-scheduled
+        {{- if or .Values.limit_cpu .Values.limit_memory }}
           limits:
+            {{- if .Values.limit_memory }}
             memory: "{{ trimAll "\"" .Values.limit_memory }}"
+            {{- end }}
+            {{- if .Values.limit_cpu }}
             cpu: "{{ trimAll "\"" .Values.limit_cpu }}"
+            {{- end }}
+        {{- end }}
+        {{- if or .Values.requests_cpu .Values.requests_memory }}
           requests:
             {{- if .Values.requests_memory }}
             memory: "{{ trimAll "\"" .Values.requests_memory }}"
             {{- end }}
+            {{- if .Values.requests_cpu }}
             cpu: "{{ trimAll "\"" .Values.requests_cpu }}"
+            {{- end }}
+        {{- end }}
       volumes:
       - name: certificates
         secret:
