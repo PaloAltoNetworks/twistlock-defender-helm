@@ -8,7 +8,7 @@ rules:
 - apiGroups: ["rbac.authorization.k8s.io"]
   resources: ["roles", "rolebindings", "clusterroles", "clusterrolebindings"] # Allow Defenders to list RBAC resources
   verbs: ["list"]
-{{- end}}
+{{- end }}
 {{- if .Values.monitor_istio}}
 - apiGroups: ["security.istio.io"]
   resources: ["authorizationpolicies", "peerauthentications"] # Allow Defenders to list Istio security resources
@@ -22,7 +22,7 @@ rules:
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods/proxy"] # Allow Defenders to get pod proxy
   verbs: ["get"]
-{{- end}}
+{{- end }}
 {{- if .Values.collect_pod_labels}}
 - apiGroups: ["apps"]
   resources: ["deployments", "replicasets"] # Allow Defenders to get Deployments and ReplicaSets
@@ -30,5 +30,5 @@ rules:
 - apiGroups: [""] # Core API
   resources: ["namespaces", "pods"] # Allow Defenders to get Namespaces and Pods
   verbs: ["get"]
-{{- end}}
-{{- end}}
+{{- end }}
+{{- end }}

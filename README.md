@@ -39,14 +39,18 @@ helm install external-secrets external-secrets/external-secrets -n external-secr
 
 For more details regarding the installation, follow up the [getting started](https://external-secrets.io/latest/introduction/getting-started/) guide.
 
-### Create a ClusterSecretStore or SecretStore
+### Create a ClusterSecretStore or SecretStore (optional)
 
 Follow up the corresponding [guide](https://external-secrets.io/latest/provider/aws-secrets-manager/) for installing a SecretStore or ClusterSecretStore so the External Secrets Operator can retrieve the secrets. This Chart uses by default **ClusterSecretStore** since there's no attachment to the namespace where the defender is being deployed. To change it to SecretStore, set the follwing value in your values.yaml file:
 
 ```yaml
-secret_store:                           
+secret_store:                         
   kind: SecretStore
 ```
+
+> **NOTE**
+>
+> * With the latest release, now you can create the Secret Store and its corresponding secret for credentials or service account if needed.
 
 ### Create a Secret
 
@@ -112,9 +116,9 @@ Here is a simplest recommended sample of the **values.yaml** without external se
 ```yaml
 image_name: registry.twistlock.com/twistlock/defender:defender_<VERSION>
 registry:
-    name: registry.twistlock.com
-    username: twistlock
-    password: <ACCESS_TOKEN>
+  name: registry.twistlock.com
+  username: twistlock
+  password: <ACCESS_TOKEN>
 # Secrets
 service_PARAMETER: <YOUR_SERVICE_PARAMETER>
 defender_ca_cert: <YOUR_DEFENDER_CA>
@@ -137,8 +141,70 @@ Here is a simplest recommended sample of the **values.yaml** with external secre
 ```yaml
 image_name: registry.twistlock.com/twistlock/defender:defender_<VERSION>
 secret_store:
-    name: <YOUR_SECRETSTORE_NAME>
-    remote_key: <YOUR_SECRET_NAME>
+  name: <YOUR_SECRETSTORE_NAME>
+external_secrets:
+  remote_key: <YOUR_SECRET_NAME>
+```
+
+Additionally you can create the secret store with its service account as in the following example with AWS:
+
+```yaml
+image_name: registry.twistlock.com/twistlock/defender:defender_<VERSION>
+secret_store:
+  kind: SecretStore
+  name: twistlock-secret-store
+  service_account:
+    name: twistlock-ss-service
+    annotations:
+      eks.amazonaws.com/role-arn: "arn:aws:iam::123456789012:role/team-a"
+  spec:
+    provider:
+      aws:
+        service: SecretsManager
+        region: us-east-1
+        auth:
+          jwt:
+            serviceAccountRef:
+              name: twistlock-ss-service
+external_secrets:
+    remote_key: twistlock-secrets
+```
+
+Also you can create the secret store with its secret as in the following example with AWS:
+
+```yaml
+image_name: registry.twistlock.com/twistlock/defender:defender_<VERSION>
+secret_store:
+  kind: SecretStore
+  name: twistlock-secrets-store
+  secret:
+    name: awssm-secret
+    data:
+       access-key-id: <BASE64 Encoded ACCESS KEY ID>
+       secret-access-key: <BASE64 Encoded SECRET ACCESS KEY>
+  spec:
+    provider:
+      aws:
+        service: SecretsManager
+        region: us-east-1
+        auth:
+          secretRef:
+            accessKeyIDSecretRef:
+              name: awssm-secret
+              key: access-key-id
+            secretAccessKeySecretRef:
+              name: awssm-secret
+              key: secret-access-key
+external_secrets:
+    remote_key: twistlock-secrets
+
+```
+
+If you are using external secrets operator **v0.16.2** or earlier, you must change the api_version of the external secrets as the following:
+
+```yaml
+external_secrets:
+  api_version: external-secrets.io/v1beta1
 ```
 
 ### GKE Autopilot deployment

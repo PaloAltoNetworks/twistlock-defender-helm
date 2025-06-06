@@ -24,9 +24,9 @@ gke_autopilot_annotation: ""                  # GKE autopilot annotation
 host_custom_compliance: false                 # Check custom Compliance for the host
 install_bundle:                               # Defender install bundle. External Secret: INSTALL_BUNDLE
 requests_cpu: '"256m"'                        # CPU Request of the defender
-# requests_memory: '"512Mi"'                    # Memory Request of the defender
-limit_cpu: '"900m"'                          # CPU Limits of the defender
-limit_memory: '"512Mi"'                      # Memory Limits of the defender
+requests_memory:                              # Memory Request of the defender
+limit_cpu: '"900m"'                           # CPU Limits of the defender
+limit_memory: '"512Mi"'                       # Memory Limits of the defender
 monitor_istio: false                          # Enable Istio Monitoring
 monitor_service_accounts: true                # Enable monitoring of the Service Accounts
 node_selector: ""                             # Node Selector of the defender
@@ -47,10 +47,36 @@ registry:                                     # Registry information to pull the
 twistlock_secret: twistlock-secrets           # Name of the secret use to store defender certificates
 env_secret: twistlock-env-secrets             # Name of the secret use to store environment variables
 secret_store:                                 # Integrate with External Secrets Operator
-  name:                                       # Name of the Secrets Store where the Access to Prisma is located
-  kind: ClusterSecretStore                    # Secrets Store kind
+  name:                                       # Name of the SecretStore where the Access to Prisma is located
+  kind: ClusterSecretStore                    # SecretStore kind
+  annotations:                                # SecretStore's annotations
+  labels:                                     # SecretStore's labels
+  service_account:                            # SecretStore's Service Account (optional)
+    name:                                     
+    annotations:                             
+    labels:                                   
+  secret:                                     # SecretStore's secret with the credentials (optional)
+    name:                                     
+    data:
+  spec:                                       # SecretStore spec configuration 
+#    provider:
+#      aws:
+#        service: SecretsManager
+#        role: iam-role
+#        region: eu-central-1
+#        auth:
+#          secretRef:
+#            accessKeyIDSecretRef:
+#              name: awssm-secret
+#              key: access-key
+#            secretAccessKeySecretRef:
+#              name: awssm-secret
+#              key: secret-access-key
+external_secrets:
+  refresh_policy: OnChange                    # Secrets refresh policy
   refresh_interval: 1h                        # Secrets refresh interval
   remote_key:                                 # Remote secret name for extracting the Defender secrets
+  api_version: external-secrets.io/v1         # API version of the external Secrets
   properties_name:                            # ExternalSecret properties name
     service_parameter: SERVICE_PARAMETER      # SERVICE_PARAMETER key name on remote secret
     defender_ca: DEFENDER_CA                  # DEFENDER_CA key name on remote secret

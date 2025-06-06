@@ -12,4 +12,4 @@ subjects:
   kind: ServiceAccount
   name: twistlock-service
   namespace: {{ .Release.Namespace }}
-{{- end}}
+{{- end }}

@@ -1,4 +1,4 @@
-{{- if .Values.openshift}}
+{{- if .Values.openshift }}
 apiVersion: security.openshift.io/v1
 kind: SecurityContextConstraints
 metadata:
@@ -35,4 +35,4 @@ supplementalGroups: # Supplemental groups are regular Linux groups. When a proce
   type: RunAsAny
 volumes:
 - '*' # Types of volumes the pod can mount. * is wildcard. https://docs.openshift.org/latest/architecture/additional_concepts/authorization.html#authorization-controlling-volumes
-{{- end}}
+{{- end }}

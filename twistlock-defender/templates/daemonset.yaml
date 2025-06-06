@@ -13,28 +13,28 @@ spec:
         container.apparmor.security.beta.kubernetes.io/twistlock-defender: unconfined
 {{- if .Values.gke_autopilot_annotation }}
         {{ .Values.gke_autopilot_annotation }}
-{{- end}}
+{{- end }}
 {{- if .Values.annotations }}
   {{- range $key, $val := .Values.annotations }}
         {{ $key }}: {{ $val }}
-  {{- end}}
-{{- end}}
+  {{- end }}
+{{- end }}
       labels:
         app: twistlock-defender
 {{- if .Values.labels }}
   {{- range $key, $val := .Values.labels }}
         {{ $key }}: {{ $val }}
-  {{- end}}
-{{- end}}
+  {{- end }}
+{{- end }}
     spec:
   {{- if .Values.tolerations }}
       tolerations:
       {{- range $i, $toleration := .Values.tolerations }}{{ $first := 1 }}
         {{- range $key, $val := $toleration }}
       {{if eq $first 1 }}- {{ $key }}: {{ $val -}} {{ $first = 0 }}{{ else }}  {{ $key }}: {{ $val -}}{{- end }}
-        {{- end}}
-      {{- end}}
-  {{- end}}
+        {{- end }}
+      {{- end }}
+  {{- end }}
       {{- if .Values.affinity }}
       affinity:
 {{ .Values.affinity | toYaml | indent 8 }}
@@ -43,15 +43,15 @@ spec:
 {{- if .Values.image_pull_secret }}
       imagePullSecrets:
       - name: {{ .Values.image_pull_secret }}
-{{- end}}
+{{- end }}
       restartPolicy: Always
 {{- if .Values.node_selector }}
       nodeSelector:
         {{ .Values.node_selector }}
-{{- end}}
+{{- end }}
 {{- if .Values.priority_class_name }}
       priorityClassName: {{.Values.priority_class_name}}
-{{- end}}
+{{- end }}
       containers:
       - name: twistlock-defender
         image: {{ .Values.image_name }}
@@ -63,26 +63,26 @@ spec:
 {{- if .Values.container_runtime_socket_folder}}
         - name: docker-sock-folder
           mountPath: "{{ .Values.container_runtime_socket_folder }}"
-{{- end}}
+{{- end }}
 {{- if not .Values.talos }}
         - name: passwd
           mountPath: "/etc/passwd"
-{{- end}}
+{{- end }}
           readOnly: true
         - name: syslog-socket
           mountPath: "/dev/log"
 {{- if .Values.containers_storage_mount }}
         - name: {{ .Values.cri_data_volume_name }}
           mountPath: {{ .Values.containers_storage_mount }}
-{{- end}}
+{{- end }}
 {{- if .Values.containers_storage_mount_rke2 }}
         - name: {{ .Values.cri_data_rke2_volume_name }}
           mountPath: {{ .Values.containers_storage_mount_rke2 }}
-{{- end}}
+{{- end }}
 {{- if .Values.runc_proxy_sock_folder }}
         - name: runc-proxy-sock-folder
           mountPath: "/run"
-{{- end}}
+{{- end }}
         env:
         - name: WS_ADDRESS
           valueFrom:
@@ -125,7 +125,7 @@ spec:
 {{- if .Values.FIPS_ENABLED }}
         - name: FIPS_ENABLED
           value: "{{ .Values.FIPS_ENABLED }}"
-{{- end}}
+{{- end }}
         securityContext:
           readOnlyRootFilesystem: true
           privileged: {{ .Values.privileged }}
@@ -177,27 +177,27 @@ spec:
       - name: passwd
         hostPath:
           path: "/etc/passwd"
-{{- end}}
+{{- end }}
 {{- if .Values.container_runtime_socket_folder}}
       - name: docker-sock-folder
         hostPath:
           path: "{{ .Values.container_runtime_socket_folder }}"
-{{- end}}
+{{- end }}
 {{- if .Values.containers_storage_mount }}
       - name: {{ .Values.cri_data_volume_name }}
         hostPath:
           path: {{ .Values.containers_storage_mount }}
-{{- end}}
+{{- end }}
 {{- if .Values.containers_storage_mount_rke2 }}
       - name: {{ .Values.cri_data_rke2_volume_name }}
         hostPath:
           path: {{ .Values.containers_storage_mount_rke2 }}
-{{- end}}
+{{- end }}
 {{- if .Values.runc_proxy_sock_folder}}
       - name: runc-proxy-sock-folder
         hostPath:
           path: "/run"
-{{- end}}
+{{- end }}
       hostPID: true
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
