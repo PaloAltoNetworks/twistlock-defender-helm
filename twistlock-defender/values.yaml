@@ -96,6 +96,13 @@ talos: false                                  # Verify if it's TalOS deployment
 twistlock_data_folder: /var/lib/twistlock     # Container folder where the defender data will be located
 unique_hostname: true                         # Assign unique host names
 ws_address:                                   # Web Socket address. External Secret Key: WS_ADDRESS
+extraEnv: []                                  # Additional environment variables for the defender container
+#  - name: HTTP_PROXY
+#    value: "http://proxy.example.com:8080"
+#  - name: HTTPS_PROXY
+#    value: "http://proxy.example.com:8080"
+#  - name: NO_PROXY
+#    value: "localhost,127.0.0.1,.cluster.local"
 annotations:                                  # Defender DaemonSet annotations
 #  annotation1: test
 tolerations:                                  # Makes pods runnable on all nodes including master node.
