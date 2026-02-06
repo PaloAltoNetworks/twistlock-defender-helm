@@ -126,6 +126,17 @@ spec:
         - name: FIPS_ENABLED
           value: "{{ .Values.FIPS_ENABLED }}"
 {{- end }}
+{{- if .Values.extraEnv }}
+{{- range .Values.extraEnv }}
+        - name: {{ .name }}
+{{- if .value }}
+          value: {{ .value | quote }}
+{{- else if .valueFrom }}
+          valueFrom:
+{{ .valueFrom | toYaml | indent 12 }}
+{{- end }}
+{{- end }}
+{{- end }}
         securityContext:
           readOnlyRootFilesystem: true
           privileged: {{ .Values.privileged }}
