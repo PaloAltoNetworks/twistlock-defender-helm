@@ -29,6 +29,7 @@ limit_cpu: '"900m"'                           # CPU Limits of the defender
 limit_memory: '"512Mi"'                       # Memory Limits of the defender
 monitor_istio: false                          # Enable Istio Monitoring
 monitor_service_accounts: true                # Enable monitoring of the Service Accounts
+nftables_enabled: true                        # Enables defender to use nftables instead of iptables for network controls
 node_selector: ""                             # Node Selector of the defender
 old_defender_ca_cert: ""                      # Old defender CA Cert
 old_defender_client_cert: ""                  # Old defender client cert

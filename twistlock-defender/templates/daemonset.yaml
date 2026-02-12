@@ -126,6 +126,10 @@ spec:
         - name: FIPS_ENABLED
           value: "{{ .Values.FIPS_ENABLED }}"
 {{- end }}
+{{- if .Values.nftables_enabled }}
+        - name: NFTABLES_ENABLED
+          value: "{{ .Values.nftables_enabled }}"
+{{- end }}
 {{- if .Values.extraEnv }}
 {{- range .Values.extraEnv }}
         - name: {{ .name }}
