@@ -16,14 +16,14 @@ spec:
 {{- end }}
 {{- if .Values.annotations }}
   {{- range $key, $val := .Values.annotations }}
-        {{ $key }}: {{ $val }}
+        {{ $key }}: {{ $val | quote }}
   {{- end }}
 {{- end }}
       labels:
         app: twistlock-defender
 {{- if .Values.labels }}
   {{- range $key, $val := .Values.labels }}
-        {{ $key }}: {{ $val }}
+        {{ $key }}: {{ $val | quote }}
   {{- end }}
 {{- end }}
     spec:
